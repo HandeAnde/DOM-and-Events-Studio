@@ -16,6 +16,9 @@ let down = document.getElementById('down');
 let right = document.getElementById('right');
 let rocket = document.getElementById('rocket');
 let buttons = document.getElementById('buttons');
+let rocketPosition = null;
+
+rocket.style.position = 'absolute';
 
 takeOff.addEventListener('click', function(){
     let response = window.confirm('Confirm that the shuttle is ready for takeoff.');
@@ -44,27 +47,31 @@ abort.addEventListener('click', function(){
     }
 });
 
-up.addEventListener('click', function(Event){
-    rocket.style.position = 'relative';
-    rocket.style.top += '-10px';
-    shuttleHeight.innerHTML += Number(10000);
+function shuttleHeightCalculation(num){
+
+}
+
+up.addEventListener('click', function(){
+    rocketPosition -= 10;
+        rocket.style.top = rocketPosition + "px";
+        spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) + 10000;
 });
 
-down.addEventListener('click', function(Event){
-    rocket.style.position = 'relative';
-    rocket.style.bottom += '-10px';
-    shuttleHeight.innerHTML -= Number(10000);
+down.addEventListener('click', function(){
+    rocketPosition += 10;
+        rocket.style.top = rocketPosition + "px";
+            spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) - 10000;
 });
 
-right.addEventListener('click', function(Event){
-    rocket.style.position = 'relative';
-    rocket.style.right += '-10px';
+right.addEventListener('click', function(){
+    rocketPosition += 10;
+        return rocket.style.right = rocketPosition + "px";
 });
 
-left.addEventListener('click', function(Event){
-    rocket.style.position = 'relative';
-    rocket.style.left += '-10px';
-});
+    left.addEventListener("click", function() {
+        rocketPosition -= 10;
+        return rocket.style.left = rocketPosition + "px";
+    });
 
 });
 
